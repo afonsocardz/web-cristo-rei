@@ -3,10 +3,7 @@ import MuiTextField, {
 } from "@mui/material/TextField";
 import { ReactNode, RefObject, forwardRef } from "react";
 
-interface InputProps {
-  props: MuiInputProps;
-  children: ReactNode;
-}
+type InputProps = MuiInputProps & { children?: ReactNode };
 
 type Ref =
   | ((instance: HTMLDivElement | null) => void)
@@ -14,7 +11,7 @@ type Ref =
   | null
   | undefined;
 
-function TextField({ props, children }: InputProps, ref: Ref) {
+function TextField({ children, ...props }: InputProps, ref: Ref) {
   return (
     <MuiTextField ref={ref} {...props}>
       {children}

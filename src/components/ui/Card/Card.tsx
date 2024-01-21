@@ -1,9 +1,8 @@
 import { ReactNode, RefObject, forwardRef } from "react";
 import MuiCard, { CardProps as MuiCardProps } from "@mui/material/Card";
 
-interface CardProps {
+interface CardProps extends MuiCardProps {
   children: ReactNode;
-  props: MuiCardProps;
 }
 
 type Ref =
@@ -12,7 +11,7 @@ type Ref =
   | null
   | undefined;
 
-function Card({ props, children }: CardProps, ref: Ref) {
+function Card({ children, ...props }: CardProps, ref: Ref) {
   return (
     <MuiCard ref={ref} {...props}>
       {children}
